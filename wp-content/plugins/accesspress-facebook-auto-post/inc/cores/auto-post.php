@@ -165,11 +165,7 @@ if (in_array($post_type, $account_details['post_types']) && $account_extra_detai
                 $attachment = array('message' => $message_format,
                     'access_token' => $access_token,
                     'link' => $post_link,
-                    'name' => $post_title,
-                    'caption' => $caption,
-                    'description' => $description,
-                    'actions' => array(array('name' => $post_title,'link' => $post_link)),
-                    'picture' => $picture
+                    'actions' => array(array('name' => $post_title,'link' => $post_link))
                 );
             }
             $post_id = $id;

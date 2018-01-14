@@ -45,12 +45,24 @@
                     <div class="asap-network-field">
                         <input type="text" name="account_details[application_secret]" value="<?php echo isset($account_details['application_secret']) ? esc_attr($account_details['application_secret']) : ''; ?>"/>
                         <div class="asap-field-note">
-                            <?php
+                            <p><?php
                             $site_url = site_url();
                             _e("Please visit <a href='https://developers.facebook.com/apps' target='_blank'>here</a> and create new Facebook Application to get Application ID and Application Secret.<br/><br/> Also please make sure you follow below steps after creating app.<br/><br/>Navigate to Apps > Settings > Edit settings > Website > Site URL. Set the site url as : $site_url ", 'accesspress-facebook-auto-post');
-                            ?>
-                            <br /><br />
-                            <?php _e('Once you create the app, please make sure you have made your app live from App Review option of your App Dashboard else the posts that are auto published from this app won\'t be visible to the pubic .','accesspress-facebook-auto-post');?>
+                            ?></p>
+                            <p>
+                            <?php _e('Please follow below screenshots too.','accesspress-facebook-auto-post');?><br />
+                            <a href="http://prntscr.com/gy0gol" target="_blank">http://prntscr.com/gy0gol</a><br/>
+                            <a href="http://prntscr.com/gy0knj" target="_blank">http://prntscr.com/gy0knj</a><br/>
+                            <a href="http://prntscr.com/hygifu" target="_blank">http://prntscr.com/hygifu</a>
+                            
+                            </p>
+                            <p>
+                            <?php 
+                            $redirect_url = admin_url('admin-post.php?action=afap_callback_authorize');
+                            _e('Please add below url in the Valid OAuth redirect URIs with reference to 3rd screenshot.','accesspress-facebook-auto-post');?>
+                            <textarea readonly="readonly" onfocus="this.select();" style="width: 100%;height:50px;margin-top:10px;"><?php echo $redirect_url;?></textarea>
+                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -79,8 +91,12 @@
                             <option value="simple" <?php echo (isset($account_details['post_format']) && $account_details['post_format'] == 'simple') ? 'selected="selected"' : ''; ?>><?php _e('Simple Text Message', 'accesspress-facebook-auto-post'); ?></option>
                             <option value="link" <?php echo (isset($account_details['post_format']) && $account_details['post_format'] == 'link') ? 'selected="selected"' : ''; ?>><?php _e('Attach Blog Post', 'accesspress-facebook-auto-post'); ?></option>
                         </select>
+                        <div class="asap-field-note">
+                        <?php _e('Note: For Blog Post format, please use Facebook open graph debugger <a href="https://developers.facebook.com/tools/debug/" target="_blank">here</a> to check if your site has proper facebook og tags to display Title, Image and Description in the Facebook for auto published post.','accesspress-facebook-auto-post');?>
+                    </div>
                     </div>
                 </div>
+                <?php /*
                 <div class="asap-network-field-wrap">
                     <label><?php _e('Include Image', 'accesspress-facebook-auto-post'); ?></label>
                     <div class="asap-network-field">
@@ -102,6 +118,7 @@
                         <input type="text" name="account_details[custom_image_url]" placeholder="<?php _e('Enter URL of the image here', 'accesspress-facebook-auto-post'); ?>" value="<?php echo esc_attr($account_details['custom_image_url']) ?>"/>
                     </div>
                 </div>
+                <?php */ ?>
                 <div class="asap-network-field-wrap">
                     <label><?php _e('Auto Post Pages', 'accesspress-facebook-auto-post'); ?></label>
                     <div class="asap-network-field">
